@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.Card {
+  height: 700px;
+  background-color: rgb(186, 186, 207);
+  margin-top: 80px;
+  
+}
+h3 {
+  margin-bottom: 50px;
+}
+.marginbottom {
+  margin-bottom: 70px;
+}
+.margintop {
+  margin-top: 70px;
+}
+.font-size-200 {
+  font-size: 250px;
+  margin-top: 70px;
+  margin-left: 90px;
+  color: rgb(6, 112, 89);
+}
+.blocks {
+  color: white;
+  height : 45px;
+  font-size: 30px;
+}
+
+.texts {
+  font-size: 30px;
+  color: rgb(122, 11, 133);
+}
