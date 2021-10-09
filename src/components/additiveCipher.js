@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem,Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 class Additive extends Component {
 
@@ -13,13 +13,13 @@ class Additive extends Component {
             blocks : [],
             ciphertext: '',
             flag: 0,
-            count: 0,
             currentplainletter: '',
             currentcipherletter: ''
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.resetValue = this.resetValue.bind(this);
     }
     handleChange(event) {
         //console.log(event);
@@ -38,9 +38,26 @@ class Additive extends Component {
         event.preventDefault();
         for(let i=0;i<26;i++)
         {
-            this.state.blocks.push('rgb(173, 157, 136)');
+            this.state.blocks.push('rgb(40,40,40)');
         }
         this.changeincipher();
+    }
+
+    resetValue() {
+        var newarr=[];
+        for(let i=0;i<26;i++)
+        {
+            newarr.push('rgb(40,40,40)');
+        }
+        this.setState({
+            plaintext: '',
+            key: null,
+            blocks : newarr,
+            ciphertext: '',
+            flag: 0,
+            currentplainletter: '',
+            currentcipherletter: ''
+        });
     }
     
     changeincipher(){
@@ -51,20 +68,20 @@ class Additive extends Component {
             for(var i=0;i<26;i++)
             {
                 var newarr = this.state.blocks;
-                newarr[i] = 'rgb(173, 157, 136)';
+                newarr[i] = 'rgb(40,40,40)';
                 this.setState({blocks : newarr});
             }
             var ind = this.state.letters.indexOf(this.state.currentplainletter);
             for(let i=ind;i<=ind + Number(this.state.key);i++) {
                 setTimeout(() => {
-                    var color='rgb(247, 58, 58)';
+                    var color='#330000';
                     if(i === ind + Number(this.state.key)) {
-                        color = 'rgb(19, 199, 19)';
+                        color = '#00FF00';
                     }
                     var newarr = this.state.blocks;
                     newarr[i%26] = color;
                     this.setState({blocks : newarr});
-                    if(color==='rgb(19, 199, 19)') {
+                    if(color==='#00FF00') {
                         setTimeout(() => {
                             let index = this.state.letters.indexOf(this.state.plaintext[this.state.flag-1]);
                             let newindex = (index + Number(this.state.key))%26;
@@ -120,7 +137,7 @@ class Additive extends Component {
                         </div>
                     </div>
                     <div className="offset-1 margintop">
-                        <h3>The formula of encryption is:</h3>
+                        <h3 style={{color: "#00FFFF"}}>The formula of encryption is:</h3>
 
                         <p>En (x) = (x + n) mod 26</p>
 
@@ -146,12 +163,12 @@ class Additive extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-3 Card">
-                            <h2 className="marginbottom">Plain Text</h2>
+                            <h2 className="marginbottom" style={{color: "#00FFFF"}}>Plain Text</h2>
                             <p className="texts">{this.state.plaintext}</p>
                             <h1 className="font-size-200">{this.state.currentplainletter}</h1>
                         </div>
                         <div className="col-md-4 offset-1 Card">
-                            <h2 className="marginbottom">Plain Text to Cipher Text</h2>
+                            <h2 className="marginbottom"  style={{color: "#00FFFF"}}>Plain Text to Cipher Text</h2>
                             <div className="row">
                                 <div className="col-1 blocks" style={{background : this.state.blocks[0]}}>A</div>
                                 <div className="col-1 offset-1 blocks" style={{background : this.state.blocks[1]}}>B</div>
@@ -190,9 +207,14 @@ class Additive extends Component {
                             </div>
                         </div>
                         <div className="col-md-3 offset-1 Card">
-                            <h2 className="marginbottom">Cipher Text</h2>
+                            <h2 className="marginbottom"  style={{color: "#00FFFF"}}>Cipher Text</h2>
                             <p className="texts">{this.state.ciphertext}</p>
                             <h1 className="font-size-200">{this.state.currentcipherletter}</h1>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="offset-5 col-4 margintop">
+                        <Button className="btn-danger btn-lg" onClick={this.resetValue} style={{width:300}}>Reset</Button>
                         </div>
                     </div>
                 </div>

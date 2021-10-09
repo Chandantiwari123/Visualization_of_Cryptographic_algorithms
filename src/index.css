@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  color: white;
 }
 
 code {
@@ -13,8 +15,9 @@ code {
 }
 .Card {
   height: 700px;
-  background-color: rgb(186, 186, 207);
+  background-color: rgb(24,24,24);
   margin-top: 80px;
+  padding: 30px 30px 30px 30px;
   
 }
 h3 {
@@ -30,15 +33,29 @@ h3 {
   font-size: 250px;
   margin-top: 70px;
   margin-left: 90px;
-  color: rgb(6, 112, 89);
+  color: #E0FFFF;
 }
 .blocks {
   color: white;
-  height : 45px;
   font-size: 30px;
 }
 
 .texts {
   font-size: 30px;
-  color: rgb(122, 11, 133);
+}
+
+.algo-card {
+  height: 400px;
+  width: 400px;
+  background-color: rgb(24,24,24);
+  padding: 30px 30px 30px 30px;
+  margin: 10px 10px 10px 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: #D3D3D3;
 }
